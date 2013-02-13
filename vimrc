@@ -165,3 +165,21 @@ augroup ft_vim
 augroup END
 " vim END }}}
 " -------------------------------------------------------------------------- }}}
+" Plugin ------------------------------------------------------------------- {{{
+" NERD Tree {{{
+noremap  <F2> :NERDTreeToggle<cr>
+inoremap <F2> <esc>:NERDTreeToggle<cr>
+
+augroup ps_nerdtree
+    au!
+    au Filetype nerdtree setlocal nolist
+augroup END
+
+let NERDTreeHighlightCursorline = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDChristmasTree = 1
+let NERDTreeChDirMode = 2
+let NERDTreeMapJumpFirstChild = 'gK'
+" }}}
+" -------------------------------------------------------------------------- }}}
