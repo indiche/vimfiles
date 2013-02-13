@@ -121,6 +121,13 @@ if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
 " Backup END }}}
+" Ignore {{{
+set wildignore+=.hg,.git,.svn
+set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.bmp
+set wildignore+=*.sw?
+set wildignore+=.netrwhist
+set wildignore+=.DS_Store
+" }}}
 
 " -------------------------------------------------------------------------- }}}
 " Folding ------------------------------------------------------------------ {{{
