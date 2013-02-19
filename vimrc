@@ -8,7 +8,9 @@ filetype plugin indent on
 
 let mapleader=','
 
+let g:solarized_bold=0
 let g:solarized_underline=0
+let g:solarized_italic=0
 
 set background=light
 colorscheme solarized
