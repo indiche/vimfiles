@@ -8,6 +8,11 @@ filetype plugin indent on
 
 let mapleader=','
 
+let g:solarized_underline=0
+
+set background=light
+colorscheme solarized
+
 set hidden
 set switchbuf=useopen
 
