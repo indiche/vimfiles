@@ -6,6 +6,8 @@ set nocompatible
 syntax on
 filetype plugin indent on
 
+let mapleader=','
+
 set hidden
 set switchbuf=useopen
 
@@ -137,8 +139,7 @@ set foldlevelstart=0
 nnoremap <Space> za
 vnoremap <Space> za
 
-nnoremap <C-z> mzzMzvzz15<C-e>
-function FoldText()
+function! FoldText()
     let line = getline(v:foldstart)
 
     let nucolwidth = &fdc + &number * &numberwidth
@@ -155,6 +156,45 @@ endfunction
 
 set foldtext=FoldText()
 " -------------------------------------------------------------------------- }}}
+" Test Runner -------------------------------------------------------------- {{{
+noremap <leader>ev :edit $MYVIMRC<CR>
+noremap <leader>sv :source $MYVIMRC<CR>
+
+noremap <leader>t :call <SID>RunTest()<CR>
+
+function! s:RunTest()
+    let is_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+    if is_test_file
+        let t:test_file = @%
+    elseif !exists("t:test_file")
+        echom "No test file found"
+        return
+    endif
+
+    write
+    silent !echo
+    silent !echo
+    silent !echo
+    silent !echo
+
+    if match(t:test_file, '\.feature$') != -1
+        if filereadable("script/features")
+            exec ":!script/features " . t:test_file
+        else
+            exec ":!cucumber --color " . t:test_file
+        end
+    else
+        if filereadable("script/test")
+            exec ":!script/test " . t:test_file
+        elseif filereadable("Gemfile")
+            exec ":!bundle exec rspec --color " . t:test_file
+        else
+            exec ":!rspec --color " . t:test_file
+        end
+    end
+endfunction
+
+" -------------------------------------------------------------------------- }}}
 " Filetype ----------------------------------------------------------------- {{{
 " vim {{{
 augroup ft_vim
@@ -164,6 +204,12 @@ augroup ft_vim
     au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
 augroup END
 " vim END }}}
+" ruby {{{
+augroup ft_ruby
+    au!
+    au FileType ruby setlocal tabstop=4 shiftwidth=2 softtabstop=2
+augroup END
+" ruby END }}}
 " -------------------------------------------------------------------------- }}}
 " Plugin ------------------------------------------------------------------- {{{
 " NERD Tree {{{
