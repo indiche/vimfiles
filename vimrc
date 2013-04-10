@@ -8,6 +8,9 @@ filetype plugin indent on
 
 let mapleader=','
 
+noremap <leader>ev :edit $MYVIMRC<CR>
+noremap <leader>sv :source $MYVIMRC<CR>
+
 let g:solarized_bold=0
 let g:solarized_underline=0
 let g:solarized_italic=0
@@ -164,9 +167,6 @@ endfunction
 set foldtext=FoldText()
 " -------------------------------------------------------------------------- }}}
 " Test Runner -------------------------------------------------------------- {{{
-noremap <leader>ev :edit $MYVIMRC<CR>
-noremap <leader>sv :source $MYVIMRC<CR>
-
 noremap <leader>t :call <SID>RunTest()<CR>
 
 function! s:RunTest()
