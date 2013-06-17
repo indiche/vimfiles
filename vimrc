@@ -78,8 +78,8 @@ set number
 set wrap
 set textwidth=80
 set formatoptions=qrn1
-set colorcolumn=+1
-set synmaxcol=160
+execute "set colorcolumn=" . join(range(81,335), ',')
+set synmaxcol=256
 
 " Make Y consistent with C and D
 nnoremap Y y$
