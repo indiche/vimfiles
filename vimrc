@@ -11,12 +11,25 @@ let mapleader=','
 noremap <leader>ev :edit $MYVIMRC<CR>
 noremap <leader>sv :source $MYVIMRC<CR>
 
-let g:solarized_bold=0
-let g:solarized_underline=0
-let g:solarized_italic=0
+" solarized light colorscheme {{{
+"
+" let g:solarized_bold=0
+" let g:solarized_underline=0
+" let g:solarized_italic=0
 
-set background=light
-colorscheme solarized
+" set background=light
+" colorscheme solarized
+"
+" }}}
+
+" tomorrow dark colorscheme {{{
+
+" let base16colorspace=256
+
+set background=dark
+colorscheme base16-tomorrow
+
+" }}}
 
 set hidden
 set switchbuf=useopen
@@ -137,11 +150,12 @@ endif
 " Backup END }}}
 " Ignore {{{
 set wildignore+=.hg,.git,.svn
-set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.bmp
+set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.bmp,*.ico
 set wildignore+=*.sw?
 set wildignore+=.netrwhist
 set wildignore+=.DS_Store
-set wildignore+=node_modules
+set wildignore+=node_modules,lib
+set wildignore+=*.cs,*.sln,*.config,*.asax,*.resx
 " }}}
 
 " -------------------------------------------------------------------------- }}}
