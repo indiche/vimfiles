@@ -186,7 +186,7 @@ endfunction
 
 set foldtext=FoldText()
 " -------------------------------------------------------------------------- }}}
-" Test Runner -------------------------------------------------------------- {{{
+" Ruby Test Runner -------------------------------------------------------------- {{{
 noremap <leader>t :call <SID>RunTest()<CR>
 
 function! s:RunTest()
@@ -254,5 +254,25 @@ let NERDTreeDirArrows = 1
 let NERDChristmasTree = 1
 let NERDTreeChDirMode = 2
 let NERDTreeMapJumpFirstChild = 'gK'
+" }}}
+
+" CtrlP {{{
+let g:ctrlp_dont_split = 'NERD_tree_2'
+let g:ctrlp_jump_to_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_match_window_reversed = 1
+let g:ctrlp_split_window = 0
+let g:ctrlp_max_height = 20
+let g:ctrlp_extensions = ['tag']
+
+nnoremap <leader>p :CtrlPTag<cr>
+
+let g:ctrlp_prompt_mappings = {
+\ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
+\ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
+\ 'PrtHistory(-1)':       ['<c-n>'],
+\ 'PrtHistory(1)':        ['<c-p>'],
+\ 'ToggleFocus()':        ['<c-tab>'],
+\ }
 " }}}
 " -------------------------------------------------------------------------- }}}
