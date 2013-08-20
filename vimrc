@@ -1,4 +1,7 @@
+set shell=/bin/bash
+
 execute pathogen#infect()
+execute pathogen#helptags()
 
 " Basic configuration ------------------------------------------------------ {{{
 
