@@ -237,6 +237,12 @@ augroup ft_ruby
     au FileType ruby setlocal tabstop=4 shiftwidth=2 softtabstop=2
 augroup END
 " ruby END }}}
+" html {{{
+augroup ft_html
+    au!
+    au FileType html setlocal nowrap
+augroup END
+" html END }}}
 " -------------------------------------------------------------------------- }}}
 " Plugin ------------------------------------------------------------------- {{{
 " NERD Tree {{{
@@ -255,7 +261,6 @@ let NERDChristmasTree = 1
 let NERDTreeChDirMode = 2
 let NERDTreeMapJumpFirstChild = 'gK'
 " }}}
-
 " CtrlP {{{
 let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_jump_to_buffer = 0
