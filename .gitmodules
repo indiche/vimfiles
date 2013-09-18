@@ -25,3 +25,6 @@
 [submodule "bundle/vitality"]
 	path = bundle/vitality
 	url = https://github.com/sjl/vitality.vim.git
+[submodule "bundle/vim-gist"]
+	path = bundle/vim-gist
+	url = https://github.com/mattn/gist-vim.git
