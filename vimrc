@@ -34,6 +34,9 @@ colorscheme base16-tomorrow
 
 " }}}
 
+" Color!
+set t_Co=256
+
 set hidden
 set switchbuf=useopen
 
@@ -99,6 +102,13 @@ set synmaxcol=256
 
 " Make Y consistent with C and D
 nnoremap Y y$
+
+" Prevent Vim from clobbering the scrollback buffer. See
+" http://www.shallowsky.com/linux/noaltscreen.html
+set t_ti= t_te=
+
+" Status line
+set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 set complete=.,w,b,u,t
 set completeopt=longest,menuone,preview
@@ -186,7 +196,34 @@ endfunction
 
 set foldtext=FoldText()
 " -------------------------------------------------------------------------- }}}
-" Ruby Test Runner -------------------------------------------------------------- {{{
+" Whitespace --------------------------------------------------------------- {{{
+noremap <leader>w :call <SID>RemoveTrailingWhitespace()<CR>
+
+augroup TrailingWhitespace
+    autocmd BufWritePre * call <SID>RemoveTrailingWhitespace()
+augroup END
+
+function! s:RemoveTrailingWhitespace()
+    let l = line('.')
+    let c  = col('.')
+    %s/\s\+$//e
+    call cursor(l, c)
+endfunction
+" -------------------------------------------------------------------------- }}}
+" Multipurpose tab --------------------------------------------------------- {{{
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+" -------------------------------------------------------------------------- }}}
+" Ruby Test Runner --------------------------------------------------------- {{{
 noremap <leader>t :call <SID>RunTest()<CR>
 
 function! s:RunTest()
@@ -286,5 +323,10 @@ noremap <leader>g :Gist<CR>
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
+" }}}
+" Javascript {{{
+let b:javascript_fold = 1
+let javascript_enable_domhtmlcss = 1
+let g:javascript_conceal = 1
 " }}}
 " -------------------------------------------------------------------------- }}}
