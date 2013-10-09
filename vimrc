@@ -196,17 +196,26 @@ endfunction
 
 set foldtext=FoldText()
 " -------------------------------------------------------------------------- }}}
-" Whitespace --------------------------------------------------------------- {{{
-noremap <leader>w :call <SID>RemoveTrailingWhitespace()<CR>
+" Preserve ----------------------------------------------------------------- {{{
+noremap <leader>w :call <SID>Preserve("%s/\\s\\+$//e")<CR>
+noremap <leader>f :call <SID>Preserve("normal gg=G")<CR>
+
 
 augroup TrailingWhitespace
-    autocmd BufWritePre * call <SID>RemoveTrailingWhitespace()
+    autocmd BufWritePre * call <SID>Preserve("%s/\\s\\+$//e")
 augroup END
 
-function! s:RemoveTrailingWhitespace()
-    let l = line('.')
-    let c  = col('.')
-    %s/\s\+$//e
+function! s:Preserve(command)
+    " Save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+
+    " Do the business:
+    execute a:command
+
+    " Restore previous search history, and cursor position
+    let @/=_s
     call cursor(l, c)
 endfunction
 " -------------------------------------------------------------------------- }}}
@@ -310,12 +319,12 @@ let g:ctrlp_extensions = ['tag']
 nnoremap <leader>p :CtrlPTag<cr>
 
 let g:ctrlp_prompt_mappings = {
-\ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
-\ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
-\ 'PrtHistory(-1)':       ['<c-n>'],
-\ 'PrtHistory(1)':        ['<c-p>'],
-\ 'ToggleFocus()':        ['<c-tab>'],
-\ }
+            \ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
+            \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
+            \ 'PrtHistory(-1)':       ['<c-n>'],
+            \ 'PrtHistory(1)':        ['<c-p>'],
+            \ 'ToggleFocus()':        ['<c-tab>'],
+            \ }
 " }}}
 " Gist {{{
 noremap <leader>g :Gist<CR>
