@@ -14,28 +14,8 @@ let mapleader=','
 noremap <leader>ev :edit $MYVIMRC<CR>
 noremap <leader>sv :source $MYVIMRC<CR>
 
-" solarized light colorscheme {{{
-"
-" let g:solarized_bold=0
-" let g:solarized_underline=0
-" let g:solarized_italic=0
-
-" set background=light
-" colorscheme solarized
-"
-" }}}
-
-" tomorrow dark colorscheme {{{
-
-" let base16colorspace=256
-
 set background=dark
 colorscheme base16-tomorrow
-
-" }}}
-
-" Color!
-set t_Co=256
 
 set hidden
 set switchbuf=useopen
@@ -103,13 +83,6 @@ set synmaxcol=256
 " Make Y consistent with C and D
 nnoremap Y y$
 
-" Prevent Vim from clobbering the scrollback buffer. See
-" http://www.shallowsky.com/linux/noaltscreen.html
-set t_ti= t_te=
-
-" Status line
-set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
-
 set complete=.,w,b,u,t
 set completeopt=longest,menuone,preview
 
@@ -173,7 +146,6 @@ set wildignore+=*.cs,*.sln,*.config,*.asax,*.resx
 
 " -------------------------------------------------------------------------- }}}
 " Folding ------------------------------------------------------------------ {{{
-
 set foldlevelstart=0
 
 nnoremap <Space> za
@@ -197,9 +169,11 @@ endfunction
 set foldtext=FoldText()
 " -------------------------------------------------------------------------- }}}
 " Preserve ----------------------------------------------------------------- {{{
-noremap <leader>w :call <SID>Preserve("%s/\\s\\+$//e")<CR>
-noremap <leader>f :call <SID>Preserve("normal gg=G")<CR>
 
+" Remove trailing whitespace
+noremap <leader>w :call <SID>Preserve("%s/\\s\\+$//e")<CR>
+" Format file
+noremap <leader>f :call <SID>Preserve("normal gg=G")<CR>
 
 augroup TrailingWhitespace
     autocmd BufWritePre * call <SID>Preserve("%s/\\s\\+$//e")
@@ -220,15 +194,15 @@ function! s:Preserve(command)
 endfunction
 " -------------------------------------------------------------------------- }}}
 " Multipurpose tab --------------------------------------------------------- {{{
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
+inoremap <Tab> <C-R>=InsertTabWrapper()<CR>
+inoremap <S-Tab> <C-N>
 
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
+        return "\<Tab>"
     else
-        return "\<c-p>"
+        return "\<C-P>"
     endif
 endfunction
 " -------------------------------------------------------------------------- }}}
