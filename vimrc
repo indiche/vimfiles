@@ -15,6 +15,7 @@ noremap <leader>ev :edit $MYVIMRC<CR>
 noremap <leader>sv :source $MYVIMRC<CR>
 
 set background=dark
+let g:seoul256_background = 235
 colorscheme seoul256
 
 set hidden
