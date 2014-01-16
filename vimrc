@@ -15,7 +15,7 @@ noremap <leader>ev :edit $MYVIMRC<CR>
 noremap <leader>sv :source $MYVIMRC<CR>
 
 set background=dark
-colorscheme base16-tomorrow
+colorscheme seoul256
 
 set hidden
 set switchbuf=useopen
