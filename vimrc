@@ -16,7 +16,7 @@ noremap <leader>sv :source $MYVIMRC<CR>
 
 set background=dark
 let base16colorspace=256
-colorscheme base16-eighties
+colorscheme base16-chalk
 
 set hidden
 set switchbuf=useopen
@@ -243,6 +243,26 @@ function! s:RunTest()
 endfunction
 
 " -------------------------------------------------------------------------- }}}
+" Selecta ------------------------------------------------------------------ {{{
+" Run a given vim command on the results of fuzzy selecting from a given shell
+" command. See usage below.
+function! SelectaCommand(choice_command, selecta_args, vim_command)
+  try
+    silent let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+  catch /Vim:Interrupt/
+    " Swallow the ^C so that the redraw below happens; otherwise there will be
+    " leftovers from selecta on the screen
+    redraw!
+    return
+  endtry
+  redraw!
+  exec a:vim_command . " " . selection
+endfunction
+
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
+" -------------------------------------------------------------------------- }}}
 " Filetype ----------------------------------------------------------------- {{{
 " vim {{{
 augroup ft_vim
@@ -281,25 +301,6 @@ let NERDTreeDirArrows = 1
 let NERDChristmasTree = 1
 let NERDTreeChDirMode = 2
 let NERDTreeMapJumpFirstChild = 'gK'
-" }}}
-" CtrlP {{{
-let g:ctrlp_dont_split = 'NERD_tree_2'
-let g:ctrlp_jump_to_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_match_window_reversed = 1
-let g:ctrlp_split_window = 0
-let g:ctrlp_max_height = 20
-let g:ctrlp_extensions = ['tag']
-
-nnoremap <leader>p :CtrlPTag<cr>
-
-let g:ctrlp_prompt_mappings = {
-            \ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
-            \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
-            \ 'PrtHistory(-1)':       ['<c-n>'],
-            \ 'PrtHistory(1)':        ['<c-p>'],
-            \ 'ToggleFocus()':        ['<c-tab>'],
-            \ }
 " }}}
 " Gist {{{
 noremap <leader>g :Gist<CR>
