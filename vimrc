@@ -141,7 +141,6 @@ set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.bmp,*.ico
 set wildignore+=*.sw?
 set wildignore+=.netrwhist
 set wildignore+=.DS_Store
-set wildignore+=node_modules,lib
 set wildignore+=*.cs,*.sln,*.config,*.asax,*.resx
 " }}}
 
