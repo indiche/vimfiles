@@ -73,7 +73,7 @@ set lazyredraw
 set visualbell
 set title
 
-set number
+set nonumber
 
 set wrap
 set textwidth=80
