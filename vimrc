@@ -173,7 +173,7 @@ set foldtext=FoldText()
 " Remove trailing whitespace
 noremap <leader>w :call <SID>Preserve("%s/\\s\\+$//e")<CR>
 " Format file
-noremap <leader>f :call <SID>Preserve("normal gg=G")<CR>
+noremap <leader>r :call <SID>Preserve("normal gg=G")<CR>
 
 augroup TrailingWhitespace
     autocmd BufWritePre * call <SID>Preserve("%s/\\s\\+$//e")
