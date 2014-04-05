@@ -81,6 +81,9 @@ set formatoptions=qrn1
 execute "set colorcolumn=" . join(range(81,335), ',')
 set synmaxcol=256
 
+set winwidth=79
+set t_ti= t_te=
+
 " Make Y consistent with C and D
 nnoremap Y y$
 
