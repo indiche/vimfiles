@@ -1,5 +1,3 @@
-set shell=/bin/bash
-
 execute pathogen#infect()
 execute pathogen#helptags()
 
@@ -54,7 +52,7 @@ set sidescrolloff=10
 set display+=lastline
 
 set list
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:·
 set showbreak=↪
 
 set fillchars=diff:⣿,vert:│
