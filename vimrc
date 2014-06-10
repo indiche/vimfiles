@@ -176,9 +176,9 @@ noremap <leader>w :call <SID>Preserve("%s/\\s\\+$//e")<CR>
 " Format file
 noremap <leader>r :call <SID>Preserve("normal gg=G")<CR>
 
-augroup TrailingWhitespace
-    autocmd BufWritePre * call <SID>Preserve("%s/\\s\\+$//e")
-augroup END
+" augroup TrailingWhitespace
+"     autocmd BufWritePre * call <SID>Preserve("%s/\\s\\+$//e")
+" augroup END
 
 function! s:Preserve(command)
     " Save last search, and cursor position.
