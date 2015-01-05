@@ -21,9 +21,9 @@ set switchbuf=useopen
 
 set expandtab
 set smarttab
-set tabstop=8
-set shiftwidth=4
-set softtabstop=4
+set tabstop=4
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 
 set backspace=indent,eol,start
