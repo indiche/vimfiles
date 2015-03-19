@@ -37,3 +37,6 @@
 [submodule "bundle/xml.vim"]
 	path = bundle/xml.vim
 	url = https://github.com/othree/xml.vim.git
+[submodule "bundle/vim-sml"]
+	path = bundle/vim-sml
+	url = https://github.com/cypok/vim-sml.git
