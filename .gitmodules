@@ -40,3 +40,9 @@
 [submodule "bundle/vim-sml"]
 	path = bundle/vim-sml
 	url = https://github.com/cypok/vim-sml.git
+[submodule "bundle/swift.vim"]
+	path = bundle/swift.vim
+	url = git@github.com:Keithbsmiley/swift.vim.git
+[submodule "bundle/vim-objc"]
+	path = bundle/vim-objc
+	url = git@github.com:b4winckler/vim-objc.git
