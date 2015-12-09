@@ -14,7 +14,7 @@ noremap <leader>sv :source $MYVIMRC<CR>
 
 set background=dark
 let base16colorspace=256
-colorscheme base16-chalk
+colorscheme base16-tomorrow
 
 set hidden
 set switchbuf=useopen
@@ -298,6 +298,7 @@ augroup END
 augroup ft_ruby
     au!
     au FileType ruby setlocal tabstop=4 shiftwidth=2 softtabstop=2
+    au BufNewFile,BufRead Fastfile set filetype=ruby
 augroup END
 " ruby END }}}
 " html {{{
