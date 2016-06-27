@@ -12,9 +12,7 @@ let mapleader=','
 noremap <leader>ev :edit $MYVIMRC<CR>
 noremap <leader>sv :source $MYVIMRC<CR>
 
-set background=dark
-let base16colorspace=256
-colorscheme base16-tomorrow
+colorscheme dracula
 
 set hidden
 set switchbuf=useopen
@@ -76,7 +74,7 @@ set nonumber
 set wrap
 set textwidth=80
 set formatoptions=qrn1
-execute "set colorcolumn=" . join(range(81,335), ',')
+" execute "set colorcolumn=" . join(range(81,335), ',')
 set synmaxcol=256
 
 set winwidth=79

@@ -46,3 +46,6 @@
 [submodule "bundle/vim-objc"]
 	path = bundle/vim-objc
 	url = git@github.com:b4winckler/vim-objc.git
+[submodule "bundle/dracula-theme"]
+	path = bundle/dracula-theme
+	url = git@github.com:dracula/vim.git
