@@ -13,6 +13,7 @@ noremap <leader>ev :edit $MYVIMRC<CR>
 noremap <leader>sv :source $MYVIMRC<CR>
 
 colorscheme dracula
+set termguicolors
 
 set hidden
 set switchbuf=useopen
