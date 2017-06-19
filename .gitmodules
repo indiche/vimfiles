@@ -16,3 +16,6 @@
 [submodule "bundle/dracula-theme"]
 	path = bundle/dracula-theme
 	url = git@github.com:dracula/vim.git
+[submodule "bundle/elm.vim"]
+	path = bundle/elm.vim
+	url = git@github.com:lambdatoast/elm.vim.git

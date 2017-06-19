@@ -1,6 +1,25 @@
-execute pathogen#infect()
-execute pathogen#helptags()
+" dein ------------------------------------------------------------------------ {{{
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state('~/.vim/dein')
+  call dein#begin('~/.vim/dein')
+  call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
 
+  " Add or remove your plugins here:
+  call dein#add('scrooloose/nerdtree.git')
+  call dein#add('vim-ruby/vim-ruby.git')
+  call dein#add('chriskempson/base16-vim.git')
+  call dein#add('tpope/vim-git.git')
+  call dein#add('Keithbsmiley/swift.vim.git')
+  call dein#add('lambdatoast/elm.vim.git')
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+if dein#check_install()
+  call dein#install()
+endif
+" -------------------------------------------------------------------------- }}}
 " Basic configuration ------------------------------------------------------ {{{
 
 set nocompatible
@@ -12,8 +31,12 @@ let mapleader=','
 noremap <leader>ev :edit $MYVIMRC<CR>
 noremap <leader>sv :source $MYVIMRC<CR>
 
-colorscheme dracula
 set termguicolors
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 set hidden
 set switchbuf=useopen
@@ -70,7 +93,8 @@ set lazyredraw
 set visualbell
 set title
 
-set nonumber
+set number
+set relativenumber
 
 set wrap
 set textwidth=80
